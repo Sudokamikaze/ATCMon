@@ -1,0 +1,15 @@
+---
+- name: Deploy scripts for monitoring Asterisk via Zabbix
+  hosts: remote
+  become: True
+  gather_facts: False
+
+  tasks:
+    - name: Push file into specific directory
+      copy: src={{ item.src }} dest={{ item.dest }}
+      with_items:
+        - { src: "../peers_trunks.sh", dest: '/etc/zabbix/scripts' }
+        - { src: "../asterisk_peers_list.txt", dest: '/etc/zabbix/scripts' }
+        - { src: "../asterisk.conf", dest: '/etc/zabbix/zabbix_agentd.d' }
+
+...

@@ -1,0 +1,26 @@
+---
+- name: Generate inventory
+  hosts: localhost
+  gather_facts: no
+
+  vars_prompt:
+    - name: template_ssh_host
+      prompt: "Enter the IP of your Asterisk "
+      private: no
+    - name: template_ssh_user
+      prompt: "Enter the ssh user "
+      private: no
+    - name: template_ssh_port
+      prompt: "Enter the ssh port "
+      default: "22"
+      private: no
+    - name: template_ssh_password
+      prompt: "Enter the ssh password "
+      private: no
+
+  tasks:
+    - template: src={{ item.src }} dest={{ item.dest }}
+      with_items:
+        - { src: '../templates/inventory.j2', dest: '../playbooks/inventory' }
+
+...
