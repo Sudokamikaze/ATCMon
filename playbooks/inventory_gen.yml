@@ -9,6 +9,7 @@
       private: no
     - name: template_ssh_user
       prompt: "Enter the ssh user "
+      default: "root"
       private: no
     - name: template_ssh_port
       prompt: "Enter the ssh port "

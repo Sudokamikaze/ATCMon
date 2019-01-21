@@ -1,7 +1,6 @@
 ---
 - name: Deploy scripts for monitoring Asterisk via Zabbix
   hosts: remote
-  become: True
   gather_facts: False
 
   tasks:
